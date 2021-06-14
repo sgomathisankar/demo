@@ -14,10 +14,12 @@
 	<name>mysqldemo</name>
 	<description>Demo project for Spring Boot with Mysql </description>
 	<properties>
+		<!-- Optional URL to server. Default value is http://localhost:9000 -->
 		<java.version>11</java.version>
-	  	<sonar.projectKey>sgomathisankar_demo</sonar.projectKey>
-	  	<sonar.organization>sgomathisankar</sonar.organization>
-	  	<sonar.host.url>https://sonarcloud.io</sonar.host.url>
+	  	<sonar.projectKey>demo</sonar.projectKey>
+	  	<sonar.host.url>http://localhost:9000</sonar.host.url>
+	  	<sonar.login>admin</sonar.login>
+	  	<sonar.password>Bpouser@8684</sonar.password>
 	</properties>
 	<dependencies>
 		<dependency>
