@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.gs.demo.Controller;
+package com.gs.demo.controller;
 
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -18,8 +18,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.gs.demo.Entity.Employee;
-import com.gs.demo.Service.EmployeeService;
+import com.gs.demo.entity.Employee;
+import com.gs.demo.service.EmployeeService;
 
 /**
  * @author Gomathi sankar

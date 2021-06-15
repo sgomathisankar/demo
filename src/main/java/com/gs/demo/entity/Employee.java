@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.gs.demo.Entity;
+package com.gs.demo.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

@@ -1,11 +1,11 @@
 /**
  * 
  */
-package com.gs.demo.Repository;
+package com.gs.demo.repository;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.gs.demo.Entity.Employee;
+import com.gs.demo.entity.Employee;
 
 /**
  * @author Gomathi sankar

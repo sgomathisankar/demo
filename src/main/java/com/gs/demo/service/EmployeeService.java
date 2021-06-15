@@ -1,15 +1,16 @@
 /**
  * 
  */
-package com.gs.demo.Service;
+package com.gs.demo.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.gs.demo.Entity.Employee;
-import com.gs.demo.Repository.EmployeeRepository;
+import com.gs.demo.entity.Employee;
+import com.gs.demo.repository.EmployeeRepository;
 
 /**
  * @author Gomathi sankar
@@ -29,7 +30,8 @@ public class EmployeeService {
     }
 
     public Employee getEmployee(Long id) {
-        return employeeRepository.findById(id).get();
+    	Optional<Employee> empOptional = employeeRepository.findById(id);
+    	if(empOptional.isPresent()) return empOptional.get(); else return new Employee();
     }
 
     public void deleteUser(Long id) {
