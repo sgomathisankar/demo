@@ -1,0 +1,35 @@
+version: '3.3'
+
+services:
+    #service 1: definition of mysql database
+    mysqldb:
+      image: mysql/mysql-server:8.0.23
+      container_name: mysql-container   
+      environment:
+        - MYSQL_ROOT_PASSWORD=Root@123
+        - MYSQL_ROOT_HOST="%"
+        - MYSQL_USER=demo
+        - MYSQL_PASSWORD=Demo@123
+      command: [mysqld, --default-authentication-plugin=mysql_native_password, --character-set-server=utf8mb4, --collation-server=utf8mb4_unicode_ci, --innodb_monitor_enable=all, --max-connections=1001]
+      ports:
+        - "3306:3306"
+      working_dir: /var/lib/mysql
+      restart: always
+    
+    #service 2: definition of your spring-boot app 
+    demoservice:                        #it is just a name, which will be used only in this file.
+      image: demo-service               #name of the image after dockerfile executes
+      container_name: demo-service-app  #name of the container created from docker image
+      build:
+        context: .                          #docker file path (. means root directory)
+        dockerfile: DockerFile              #docker file name
+      ports:
+        - "8080:8080"                       #docker containter port with your os port
+      restart: always
+        
+      depends_on:                           #define dependencies of this app
+        - mysqldb                           #dependency name (which is defined with this name 'mysqldb' in this file earlier)
+      environment:
+        SPRING_DATASOURCE_URL: jdbc:mysql://mysql-container:3306/demo?autoReconnect=true&useSSL=false&allowPublicKeyRetrieval=true
+        SPRING_DATASOURCE_USERNAME: demo
+        SPRING_DATASOURCE_PASSWORD: Demo@123
